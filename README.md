@@ -1,7 +1,7 @@
 # tortoisebot_ros2_docker
 ---
 
-This package contains all the Docker related ressources to setup a ready to use ROS1 environment to work with the Tortoisebot,  
+This package contains all the Docker related ressources to setup a ready to use ROS2 environment to work with the Tortoisebot,  
 in a simulated or real environment.
 
 ## Instalation
@@ -19,11 +19,9 @@ The docker image tags available for the simulation part are the following:
 
 | Tag                            | Description                                                                               |
 |--------------------------------|-------------------------------------------------------------------------------------------|
-| tortoisebot_base_ros1          | Base image containing with ROS1 noetic + all the required packages for the child image.   |
-| tortoisebot-ros1-gazebo        | This Docker image contains everything necessary for starting the Gazebo simulation.       |
-| tortoisebot-ros1-slam          | This Docker image contains everything necessary for starting the mapping system.          |
-| tortoisebot-ros1-waypoints     | This Docker image contains everything necessary for starting the waypoints action server. |
-| tortoisebot-ros1-webapp        | This Docker image contains everything necessary for starting the Tortoisebot webapp.      |
+| tortoisebot_base_ros2          | Base image containing with ROS2 galactic + all the required packages for the child image. |
+| tortoisebot-ros2-gazebo        | This Docker image contains everything necessary for starting the Gazebo simulation.       |
+| tortoisebot-ros2-slam          | This Docker image contains everything necessary for starting the mapping system.          |
 
 ### Usage
 
@@ -42,11 +40,10 @@ Then start the containers using docker-compose `docker-compose up`
 
 The docker image tags available for the real robot are the following:
 
-| Tag                            | Description                                                                                                               |
-|--------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| tortoisebot-ros1-real-base     | Base image containing with ROS1 noetic + all the required packages for the child image.                                   |
-| tortoisebot-ros1-real          | This Docker image contains everything necessaary for starting all the real robot systems, including the camera and laser. |
-| tortoisebot-ros1-slam-real     | This Docker image contains everything necessary for starting the mapping system for the real robot.                       |
+| Tag                   | Description                                                           |
+|-----------------------|-----------------------------------------------------------------------|
+| tortoisebot-ros2-real | Base image containing with ROS2 galactic + all the required packages. |
+
 
 ### Usage
 
@@ -56,3 +53,11 @@ Or you can pull the images from Docker Hub using the following command:
 `docker pull mcognie/maximecognie-cp22:tag`  where `tag` is one of the tags from the previous list. 
 <br/>  
 Then start the containers using docker-compose `docker-compose up`
+
+#### Note
+
+* real robot advice
+If you decide to build the image on the Tortoisebot itself (raspberry pi),
+the raspberry pi might run out of ressources to avoid this issue you can increase the swap size to the necessry size.
+(e.g tested with raspberry pi 4 with 2Gb of RAM + 2Gb Swap storage)  
+As an advice opt for pulling the image from Docker Hub instead of building it yourself.
