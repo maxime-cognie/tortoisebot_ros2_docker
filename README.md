@@ -56,7 +56,7 @@ Then start the containers using docker-compose `docker-compose up`
 
 #### Note
 
-* real robot advice
+* real robot advice  
 If you decide to build the image on the Tortoisebot itself (raspberry pi),
 the raspberry pi might run out of ressources to avoid this issue you can increase the swap size to the necessry size.
 (e.g tested with raspberry pi 4 with 2Gb of RAM + 2Gb Swap storage)  
