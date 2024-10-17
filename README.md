@@ -19,7 +19,7 @@ The docker image tags available for the simulation part are the following:
 
 | Tag                            | Description                                                                               |
 |--------------------------------|-------------------------------------------------------------------------------------------|
-| tortoisebot_base_ros2          | Base image containing with ROS2 galactic + all the required packages for the child image. |
+| tortoisebot_base_ros2          | Base image containing ROS2 galactic + all the required packages for the child image. |
 | tortoisebot-ros2-gazebo        | This Docker image contains everything necessary for starting the Gazebo simulation.       |
 | tortoisebot-ros2-slam          | This Docker image contains everything necessary for starting the mapping system.          |
 
