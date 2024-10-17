@@ -32,6 +32,4 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
     environment: 
       - DISPLAY=${DISPLAY}
-      - ROS_MASTER_URI=http://$ROS_HOSTNAME:11311
-      - ROS_HOSTNAME=$ROS_HOSTNAME
     command: ros2 launch tortoisebot_description rviz.launch.py 
