@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  bringup:
+    image: mcognie/maximecognie-cp22:tortoisebot-ros2-real
+    build:
+      context: .
+      dockerfile: tortoisebot-ros2-real.Dockerfile
+    restart: always
+    environment: 
+      - LD_LIBRARY_PATH=:/opt/vc/lib
+      - ROS_DOMAIN_ID=2
+    volumes:
+      - /opt/vc:/opt/vc
+    privileged: true
+    network_mode: "host"
+    devices:
+      - /dev/gpiomem:/dev/gpiomem
+      - /dev/mem:/dev/mem
+      - /dev/vchiq:/dev/vchiq
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    command: ros2 launch tortoisebot_bringup autobringup.launch.py use_sim_time:=False exploration:=True
+  
+  rviz:
+    image: mcognie/maximecognie-cp22:tortoisebot-ros2-real
+    build:
+      context: .
+      dockerfile: tortoisebot-ros2-real.Dockerfile
+    restart: always
+    privileged: true
+    network_mode: "host"
+    volumes:
+      - $HOME/.Xauthority:/root/.Xauthority:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment: 
+      - DISPLAY=${DISPLAY}
+      - ROS_DOMAIN_ID=2
+    command: ros2 launch tortoisebot_description rviz.launch.py 
